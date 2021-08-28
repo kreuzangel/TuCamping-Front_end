@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="ima">
-          <p class="Nombreima">Solicita tu reserva</p>
+          <p class="Nombreima">Nombre Camping</p>
           <img class="imagen" src="../Noche.jpg" alt="" />
           <input class="Ingresar" type="button" value="Enviar Solicitud" />
         </div>

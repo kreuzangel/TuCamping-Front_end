@@ -9,25 +9,70 @@
         <div class="formulario">
           <div class="user">
             <img class="imagen2" src="../waiter.png" alt="" />
-            <input class="userinput" type="text" placeholder="Usuario" />
+            <input
+              v-model="login.username"
+              class="userinput"
+              type="text"
+              placeholder="Usuario"
+            />
           </div>
           <div class="user">
             <img class="imagen3" src="../llave.png" alt="" />
-            <input class="userinput" type="text" placeholder="Contraseña" />
+            <input
+              v-model="login.password"
+              class="userinput"
+              type="text"
+              placeholder="Contraseña"
+            />
           </div>
           <p class="olvidar">¿Olvidó su Contraseña?</p>
           <div>
-            <input class="Ingresar" type="button" value="Ingresar" />
+            <input
+              class="Ingresar"
+              @click="iniciarsesion"
+              type="button"
+              value="Ingresar"
+            />
           </div>
         </div>
       </div>
     </div>
+    <pre>
+          {{ $data }}
+    </pre>
   </div>
 </template>
 <script>
+import swal from 'sweetalert';
+
 export default {
   name: "Logincamp",
-  props: {},
+  data() {
+    return {
+      login: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    async iniciarsesion() {
+      try {
+        let respuesta = await this.$http.post("/login/", this.login);
+        console.log(respuesta.data)
+        let token = respuesta.data.token;
+        let usuario = respuesta.data.user;
+        if (token){
+          localStorage.setItem('token',token)
+          localStorage.setItem('usuario', JSON.stringify(usuario))
+        }
+        swal("Bienvenido", "", "success");
+        this.$router.push('/ProfileVendor')
+      } catch (error) {
+        swal("Oops!", "Credenciales incorrectas", "error");
+      }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -124,17 +169,17 @@ export default {
   color: black;
   font-size: 10px;
   padding-top: 5px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .userinput {
   border: none;
   background: rgba(0, 0, 0, 0);
-  width:550px ;
+  width: 550px;
 }
 .userinput::placeholder {
   color: black;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
 }
 

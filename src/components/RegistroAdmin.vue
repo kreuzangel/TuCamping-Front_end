@@ -11,6 +11,9 @@
             <input class="userinput" type="text" placeholder="Apellido" />
           </div>
           <div class="user">
+            <input class="userinput" type="text" placeholder="Nombre de Usuario" />
+          </div>
+          <div class="user">
             <input class="userinput" type="text" placeholder="Teléfono" />
           </div>
           <div class="user">
@@ -85,7 +88,7 @@ export default {
   color: #4c922c;
   margin: 0px;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
   padding: 0px;
 }
 
@@ -100,7 +103,8 @@ export default {
 .imagen {
   width: 370px;
   height: 410px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 .user {
   display: flex;
@@ -139,7 +143,7 @@ export default {
   border: none;
   background: rgba(0, 0, 0, 0);
   padding: 20px;
-  width:550px ;
+  width: 550px;
 }
 .userinput::placeholder {
   font-family: "Montserrat";

@@ -6,6 +6,9 @@
       <router-link to="/Registro">Registro</router-link>
       <router-link to="/Olvidar">Olvidar</router-link>
       <router-link to="/Solicitar">Solicitar</router-link>
+      <router-link to="/Stock">Stock</router-link>
+      <router-link to="/Regiscamp">Regiscamp</router-link>
+      <router-link to="/ProfileVendor">Profil</router-link>
     </div>
     <router-view/>
   </div>

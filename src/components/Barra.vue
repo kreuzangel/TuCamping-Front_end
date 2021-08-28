@@ -17,8 +17,6 @@
 <script>
 export default {
   name: 'Barra',
-  props: {
-  }
 }
 </script>
 
@@ -45,11 +43,14 @@ export default {
 .form-control{
   border:none;
   font-weight: bold;
+  padding-left: 20px; 
+
   }
 .form-control::placeholder {
   color:black;
   font-family: 'Montserrat';
   text-align: center;
+
 }
 .btn {
   border: none;

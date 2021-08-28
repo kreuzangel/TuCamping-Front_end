@@ -41,11 +41,55 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Solicitar.vue')
+  },
+  {
+    path: '/Stock',
+    name: 'Stock',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Stock.vue')
+  },
+  {
+    path: '/Regiscamp',
+    name: 'Regiscamp',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Regiscamp.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/ProfileVendor',
+    name: 'ProfileVendor',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(destinoRequiereAuth => destinoRequiereAuth.meta.requiresAuth)) {
+    if (localStorage.getItem('token')) {
+      next();
+    } else {
+      next({
+        path: '/Login'
+      });
+    }
+  } else {
+    next();
+  }
 })
 
 export default router
