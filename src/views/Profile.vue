@@ -3,21 +3,37 @@
     <StockHeader />
     <p class="Bien">Bienvenido Pepito!</p>
     <ProfileVendor />
+    <p class="Letra">Tus Campings</p>
+    <CardCampVendor />
+    <img class="addcard" src="../mas.png" alt="" />
+    <p class="Letra">Tus Solicitudes</p>
+    <SolicitudesVendor />
   </div>
 </template>
 <script>
 // @ is an alias to /src
 import StockHeader from "@/components/StockHeader.vue";
 import ProfileVendor from "@/components/ProfileVendor.vue";
+import CardCampVendor from "@/components/CardCampVendor.vue";
+import SolicitudesVendor from "@/components/SolicitudesVendor.vue";
 export default {
   name: "Profile",
   components: {
     StockHeader,
     ProfileVendor,
+    CardCampVendor,
+    SolicitudesVendor,
   },
 };
 </script>
 <style scoped>
+
+.addcard {
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 50px;
+}
 .Bien {
   position: absolute;
   top: 8%;
@@ -29,5 +45,19 @@ export default {
   line-height: 43px;
   display: flex;
   right: 5%;
+}
+.Letra {
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 43px;
+  color: #4c922c;
+  padding-left:40px;
+  margin-bottom: 0px;
+  margin-left: 40px;
 }
 </style>

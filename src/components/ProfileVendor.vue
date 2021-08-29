@@ -3,9 +3,25 @@
     <div class="perfil">
       <p class="Letra">Tu Perfil</p>
       <div class="carta">
-        <p class="bold">Nombre</p>
+        <p class="bold">Nombre:</p>
+        <p class="nobold">Pedro</p>
+        <p class="bold">Correo:</p>
+        <p class="nobold">Pepito@gmail.com</p>
+        <p></p>
+        <p class="bold">Apellido:</p>
+        <p class="nobold">Perez</p>
+        <p class="bold">Telefono:</p>
+        <p class="nobold">3101234567</p>
+        <p></p>
+        <p class="bold">Usuario:</p>
+        <p class="nobold">Pepito</p>
+        <p></p>
+        <div class="bot">
+        <input class="Editar" type="button" value="Editar" />
+        <input class="Cerrar" type="button" value="Cerrar sesión" />
+        </div>
       </div>
-    </div>
+    </div>      
   </div>
 </template>
 
@@ -20,20 +36,66 @@ export default {
 
 
 <style scoped>
+
+
 .Bigcontenedor {
   display: flex;
   justify-content: flex-start;
   padding-left: 40px;
   padding-top: 40px;
-  height: 324px;
-}
+  min-height: 324px;
+  }
 .bold {
-  font-family: Montserrat;
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
+  color: #000000;
+  padding: 15px;
+}
+.bot{
+  display: flex;
+  justify-content: flex-end;
+}
+.Cerrar {
+  background-color: #D95D51;
+  width: 178px;
+  height: 35px;
+  border-radius: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 20px;
+  display: flex;
+  color: #ffffff;
+  justify-content: center;
+  border: none;
+  margin-left:10px;
+}
+.Editar{
+  background-color: #4c922c;
+  width: 120px;
+  height: 35px;
+  border-radius: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 20px;
+  display: flex;
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin-right: 10px;
+}
 
+.nobold {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
   color: #000000;
 }
 .perfil {
@@ -49,7 +111,7 @@ export default {
   line-height: 43px;
   color: #4c922c;
   margin-left: 40px;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 }
 .carta {
   width: 1200px;
@@ -62,6 +124,10 @@ export default {
   border-width: 1px;
   margin-left: 40px;
   display: grid;
-  padding: 40px;
+  grid-template-columns: 13% 32% 15% 35% 20%;
+  padding: 20px 20px 20px 40px;
+  text-align: left;
+  align-items: center;
+  margin: 40px;
 }
 </style>
