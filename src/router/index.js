@@ -24,7 +24,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue'),
   },
   {
     path: '/Olvidar',
@@ -71,6 +71,17 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/VendorUpdate',
+    name: 'VendorUpdate',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/VendorUpdate.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
@@ -87,7 +98,8 @@ router.beforeEach((to, from, next) => {
         path: '/Login'
       });
     }
-  } else {
+  }
+  else {
     next();
   }
 })

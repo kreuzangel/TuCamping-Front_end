@@ -21,7 +21,7 @@
             <input
               v-model="login.password"
               class="userinput"
-              type="text"
+              type="password"
               placeholder="Contraseña"
             />
           </div>
@@ -37,9 +37,6 @@
         </div>
       </div>
     </div>
-    <pre>
-          {{ $data }}
-    </pre>
   </div>
 </template>
 <script>

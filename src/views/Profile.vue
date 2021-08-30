@@ -1,7 +1,7 @@
 <template>
   <div class="Profile">
     <StockHeader />
-    <p class="Bien">Bienvenido Pepito!</p>
+    <p class="Bien">Bienvenid@ {{ userid }}!</p>
     <ProfileVendor />
     <p class="Letra">Tus Campings</p>
     <CardCampVendor />
@@ -24,10 +24,15 @@ export default {
     CardCampVendor,
     SolicitudesVendor,
   },
+  computed: {
+    userid: function () {
+      var arr = JSON.parse( localStorage.getItem('usuario') );
+      return arr.username;
+    },
+  },
 };
 </script>
 <style scoped>
-
 .addcard {
   margin-top: 20px;
   width: 50px;
@@ -56,7 +61,7 @@ export default {
   font-size: 35px;
   line-height: 43px;
   color: #4c922c;
-  padding-left:40px;
+  padding-left: 40px;
   margin-bottom: 0px;
   margin-left: 40px;
 }

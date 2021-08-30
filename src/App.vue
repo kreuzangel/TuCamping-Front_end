@@ -8,7 +8,8 @@
       <router-link to="/Solicitar">Solicitar</router-link>
       <router-link to="/Stock">Stock</router-link>
       <router-link to="/Regiscamp">Regiscamp</router-link>
-      <router-link to="/ProfileVendor">Profil</router-link>
+      <router-link to="/ProfileVendor">Profile</router-link>
+      <router-link to="/VendorUpdate">VendorUpdate</router-link>
     </div>
     <router-view/>
   </div>

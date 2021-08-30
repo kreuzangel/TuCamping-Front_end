@@ -69,10 +69,8 @@
 <script>
 export default {
   name: "RegistroCamp",
-  props: {},
-};
+}
 </script>
-
 
 
 <style scoped>

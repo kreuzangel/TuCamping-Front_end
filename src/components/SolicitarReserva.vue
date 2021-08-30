@@ -8,36 +8,36 @@
             <input class="userinput" type="text" placeholder="Nombre" />
           </div>
           <div class="user">
-            <input class="userinput" type="text" placeholder="Email" />
+            <input class="userinput" type="text" placeholder="Apellido" />
           </div>
           <div class="user1">
-            <input class="userinput" type="text" placeholder="Celular" />
+            <input class="userinput" type="email" placeholder="Email" />
           </div>
           <div class="user">
             <input
               class="userinput"
-              type="text"
+              type="number"
+              placeholder="Celular"
+            />
+          </div>
+          <div class="user1">
+            <input
+              class="userinput"
+              type="number"
               placeholder="N° de Campistas"
             />
           </div>
-          <div class="user1">
-            <input
-              class="userinput"
-              type="text"
-              placeholder="Fecha de Ingreso"
-            />
-          </div>
           <div class="user">
             <input
               class="userinput"
-              type="text"
+              type="number"
               placeholder="Fecha de Ingreso"
             />
           </div>
           <div class="user1">
             <input
               class="userinput"
-              type="text"
+              type="number"
               placeholder="Fecha de Salida"
             />
           </div>
@@ -197,5 +197,11 @@ export default {
 
 .userinput:focus {
   outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 </style>

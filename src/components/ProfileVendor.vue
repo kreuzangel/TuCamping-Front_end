@@ -4,24 +4,34 @@
       <p class="Letra">Tu Perfil</p>
       <div class="carta">
         <p class="bold">Nombre:</p>
-        <p class="nobold">Pedro</p>
+        <p class="nobold">{{ nombre }}</p>
         <p class="bold">Correo:</p>
-        <p class="nobold">Pepito@gmail.com</p>
+        <p class="nobold">{{ correo }}</p>
         <p></p>
         <p class="bold">Apellido:</p>
-        <p class="nobold">Perez</p>
+        <p class="nobold">{{ apellido }}</p>
         <p class="bold">Telefono:</p>
-        <p class="nobold">3101234567</p>
+        <p class="nobold">{{ telefono }}</p>
         <p></p>
         <p class="bold">Usuario:</p>
-        <p class="nobold">Pepito</p>
+        <p class="nobold">{{ usuario }}</p>
         <p></p>
         <div class="bot">
-        <input class="Editar" type="button" value="Editar" />
-        <input class="Cerrar" type="button" value="Cerrar sesión" />
+          <input
+            class="Editar"
+            type="button"
+            value="Editar"
+            @click="update()"
+          />
+          <input
+            @click="logOut()"
+            class="Cerrar"
+            type="button"
+            value="Cerrar sesión"
+          />
         </div>
       </div>
-    </div>      
+    </div>
   </div>
 </template>
 
@@ -29,22 +39,50 @@
 <script>
 export default {
   name: "ProfileVendor",
-  props: {},
+  computed: {
+    nombre: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.nombres;
+    },
+    apellido: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.apellidos;
+    },
+    usuario: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.username;
+    },
+    correo: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.email;
+    },
+    telefono: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.telefono;
+    },
+  },
+  methods: {
+    logOut() {
+      localStorage.removeItem("token");
+      this.$router.push("/");
+    },
+    update() {
+      this.$router.push('/VendorUpdate')
+    },
+  },
 };
 </script>
 
 
 
 <style scoped>
-
-
 .Bigcontenedor {
   display: flex;
   justify-content: flex-start;
   padding-left: 40px;
   padding-top: 40px;
   min-height: 324px;
-  }
+}
 .bold {
   font-family: "Montserrat";
   font-style: normal;
@@ -54,12 +92,12 @@ export default {
   color: #000000;
   padding: 15px;
 }
-.bot{
+.bot {
   display: flex;
   justify-content: flex-end;
 }
 .Cerrar {
-  background-color: #D95D51;
+  background-color: #d95d51;
   width: 178px;
   height: 35px;
   border-radius: 10px;
@@ -70,9 +108,9 @@ export default {
   color: #ffffff;
   justify-content: center;
   border: none;
-  margin-left:10px;
+  margin-left: 10px;
 }
-.Editar{
+.Editar {
   background-color: #4c922c;
   width: 120px;
   height: 35px;

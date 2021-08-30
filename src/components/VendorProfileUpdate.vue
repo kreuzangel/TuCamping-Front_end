@@ -1,12 +1,13 @@
 <template>
   <div class="Bigcont">
     <div class="Contenedor">
-      <p class="Bien">Registrate</p>
+      <p class="Bien">Actualiza tus datos</p>
       <div class="aux">
         <div class="formulario">
           <div class="user">
             <input
-              v-model="registro.nombres"
+              v-model="update.nombres"
+              id="nombre"
               class="userinput"
               type="text"
               placeholder="Nombres"
@@ -14,7 +15,8 @@
           </div>
           <div class="user">
             <input
-              v-model="registro.apellidos"
+              v-model="update.apellidos"
+              id="apellido"
               class="userinput"
               type="text"
               placeholder="Apellidos"
@@ -22,16 +24,9 @@
           </div>
           <div class="user">
             <input
-              v-model="registro.username"
               class="userinput"
-              type="text"
-              placeholder="Nombre de Usuario"
-            />
-          </div>
-          <div class="user">
-            <input
-              class="userinput"
-              v-model="registro.telefono"
+              v-model="update.telefono"
+              id="telefono"
               type="number"
               placeholder="Teléfono"
             />
@@ -39,7 +34,8 @@
           <div class="user">
             <input
               class="userinput"
-              v-model="registro.email"
+              v-model="update.email"
+              id="email"
               type="email"
               placeholder="Correo"
             />
@@ -54,7 +50,7 @@
           </div>
           <div class="user">
             <input
-              v-model="registro.password"
+              v-model="update.password"
               id="contra2"
               class="userinput"
               type="text"
@@ -66,9 +62,9 @@
           <img class="imagen" src="../Outdoor.png" alt="" />
           <input
             class="Ingresar"
-            @click="RegistroVendor"
+            @click="updateVendor()"
             type="button"
-            value="Registrate"
+            value="Actualizar"
           />
         </div>
       </div>
@@ -79,33 +75,17 @@
 import swal from "sweetalert";
 
 export default {
-  name: "RegistroAdmin",
+  name: "VendorProfileUpdate",
   data() {
     return {
-      registro: {
-        username: "",
-        password: "",
-        email: "",
-        nombres: "",
-        apellidos: "",
-        telefono: "",
-        // is_active: true,
-        // is_staff: true,
+      update: {
+        email: this.correo(),
+        nombres: this.nombre(),
+        apellidos: this.apellido(),
+        telefono: this.telefono(),
+        username: this.username(),
       },
     };
-  },
-  methods: {
-    async RegistroVendor() {
-      let respuesta = await this.$http.post("/usuario/usuario/", this.registro);
-      console.log(respuesta.data);
-      swal("Registro exitoso", "", "success");
-      this.$router.push("/Regiscamp");
-
-      try {
-      } catch (error) {
-        swal("Oops!", "Registro fallido, vuelva a intentarlo", "error");
-      }
-    },
   },
   computed: {
     comprobacion: function () {
@@ -115,7 +95,46 @@ export default {
         swal("Oops!", "Contraseñas no coinciden, intente de nuevo", "error");
       }
     },
-   },
+  },
+  methods: {
+    idUser: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.id;
+    },
+    nombre: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.nombres;
+    },
+    apellido: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.apellidos;
+    },
+    correo: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.email;
+    },
+    telefono: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.telefono;
+    },
+    username: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.username;
+    },
+    async updateVendor() {
+      let respuesta = await this.$http.put("/actualizar/usuario/" + this.idUser() + "/", this.update);
+      console.log(respuesta.data);
+      let usuario = respuesta.data;
+      localStorage.removeItem('usuario');
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+      swal("Actualizacion exitosa", "", "success");
+      this.$router.push("/ProfileVendor");
+      try {
+      } catch (error) {
+        swal("Oops!", "Actualizacion fallida, vuelva a intentarlo", "error");
+      }
+    },
+  },
 };
 </script>
 <style scoped>
