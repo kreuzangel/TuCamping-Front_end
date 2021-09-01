@@ -7,18 +7,34 @@
           <div class="user1">
             <input
               class="userinput"
+              v-model="Regiscamp.nombre"
               type="text"
               placeholder="Nombre del camping"
             />
           </div>
           <div class="user">
-            <input class="userinput" type="text" placeholder="Ciudad" />
+            <input
+              class="userinput"
+              v-model="Regiscamp.ciudad"
+              type="text"
+              placeholder="Ciudad"
+            />
           </div>
           <div class="user1">
-            <input class="userinput" type="text" placeholder="Dirección" />
+            <input
+              class="userinput"
+              v-model="Regiscamp.direccion"
+              type="text"
+              placeholder="Dirección"
+            />
           </div>
           <div class="user">
-            <input class="userinput" type="text" placeholder="Telefono" />
+            <input
+              class="userinput"
+              v-model="Regiscamp.telefono"
+              type="number"
+              placeholder="Telefono"
+            />
           </div>
           <div class="user1">
             <input
@@ -28,7 +44,12 @@
             />
           </div>
           <div class="user2">
-            <textarea class="userinput1" type="text" placeholder="Descripción" />
+            <textarea
+              class="userinput1"
+              v-model="Regiscamp.descripcion"
+              type="text"
+              placeholder="Descripción"
+            />
           </div>
         </div>
         <div class="ima">
@@ -36,40 +57,120 @@
           <img class="addphoto" src="../picture.png" alt="" />
           <div class="grid">
             <img class="Icon" src="../electricity.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Electricidad"
+              type="checkbox"
+            />
             <img class="Icon" src="../cutlery.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Desayuno"
+              type="checkbox"
+            />
             <img class="Icon" src="../wifi.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Wifi"
+              type="checkbox"
+            />
           </div>
           <div class="grid">
             <img class="Icon" src="../bbq.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="BBQ"
+              type="checkbox"
+            />
             <img class="Icon" src="../bonfire.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Fogata"
+              type="checkbox"
+            />
             <img class="Icon" src="../shower.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Ducha"
+              type="checkbox"
+            />
           </div>
           <div class="grid">
             <img class="Icon" src="../dog.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Aceptamos Mascotas"
+              type="checkbox"
+            />
             <img class="Icon" src="../tap.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Agua Caliente"
+              type="checkbox"
+            />
             <img class="Icon" src="../parking-sign.png" alt="" />
-            <input class="cuadrado" type="checkbox" />
+            <input
+              class="cuadrado"
+              id="checkbox"
+              value="Parqueadero disponible"
+              type="checkbox"
+            />
           </div>
         </div>
       </div>
-      <input class="Ingresar" type="button" value="Registra tu Camping" />
+      <input class="Ingresar" @click="RegistroCamp" type="button" value="Registra tu Camping" />
     </div>
+    <pre>
+      {{ $data }}
+    </pre>
   </div>
 </template>
 
 
-<script>
+<script >
+import swal from "sweetalert";
 export default {
   name: "RegistroCamp",
-}
+  data() {
+    return {
+      Regiscamp: {
+        nombre: "",
+        ciudad: "",
+        direccion: "",
+        telefono: "",
+        servicios: "null",
+        descripcion: "",
+        imagen: null,
+        vendedorId: this.idUser(),
+      },
+    };
+  },
+  methods: {
+    idUser: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.id;
+    },
+        async RegistroCamp() {
+      let respuesta = await this.$http.post("/campings/", this.Regiscamp);
+      console.log(respuesta.data);
+      swal("Registro exitoso", "", "success");
+      this.$router.push("/ProfileVendor");
+
+      try {
+      } catch (error) {
+        swal("Oops!", "Registro fallido, vuelva a intentarlo", "error");
+      }
+    },
+  },
+};
 </script>
 
 

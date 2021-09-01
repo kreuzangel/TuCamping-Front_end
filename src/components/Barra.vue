@@ -3,12 +3,12 @@
 <nav class="navbar" >
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="¿Adónde acampas?" aria-label="Search">
-    <div class="vl"></div>
+    <!-- <div class="vl"></div>
     <input class="form-control mr-sm-2" type="search" placeholder="Fecha de entrada" aria-label="Search">
     <div class="vl"></div>
     <input class="form-control mr-sm-2" type="search" placeholder="Fecha de salida" aria-label="Search">
     <div class="vl"></div>
-    <input class="form-control mr-sm-0" type="search" placeholder="N° Campistas" aria-label="Search">
+    <input class="form-control mr-sm-0" type="search" placeholder="N° Campistas" aria-label="Search"> -->
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="../loupe.png" width="50" height="50"></button>
   </form>
 </nav>
@@ -43,13 +43,17 @@ export default {
 .form-control{
   border:none;
   font-weight: bold;
-  padding-left: 20px; 
+  text-align: center;
+  min-width: 700px;
+
 
   }
 .form-control::placeholder {
   color:black;
   font-family: 'Montserrat';
   text-align: center;
+  padding-left: 20px;
+
 
 }
 .btn {

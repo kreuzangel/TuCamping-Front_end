@@ -4,7 +4,7 @@
     <img src="../ban.jpg" class="Image" alt="" />
     <div class="Titulo">
       <img src="../tent.png" class="logo" alt="..." />
-      <p>TuCamping</p>
+      <p><router-link to="/">TuCamping</router-link></p>
     </div>
   </div>
 </template> 
@@ -43,6 +43,9 @@ export default {
   justify-content: center;
   text-align: right;
   color: #fff;
+}
+.Titulo a{
+  color: white;
 }
 .logo {
   max-width: 70px;

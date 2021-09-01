@@ -2,14 +2,14 @@
   <div id="app">
     <div id="nav">
       <router-link to="/"></router-link> 
-      <router-link to="/Login">Login</router-link> 
-      <router-link to="/Registro">Registro</router-link>
-      <router-link to="/Olvidar">Olvidar</router-link>
-      <router-link to="/Solicitar">Solicitar</router-link>
-      <router-link to="/Stock">Stock</router-link>
-      <router-link to="/Regiscamp">Regiscamp</router-link>
-      <router-link to="/ProfileVendor">Profile</router-link>
-      <router-link to="/VendorUpdate">VendorUpdate</router-link>
+      <router-link to="/Registro"></router-link>
+      <router-link to="/Login"></router-link> 
+      <router-link to="/Olvidar"></router-link>
+      <router-link to="/Solicitar"></router-link>
+      <router-link to="/Stock"></router-link>
+      <router-link to="/Regiscamp"></router-link>
+      <router-link to="/ProfileVendor"></router-link>
+      <router-link to="/VendorUpdate"></router-link>
     </div>
     <router-view/>
   </div>

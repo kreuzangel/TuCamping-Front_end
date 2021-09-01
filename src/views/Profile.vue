@@ -5,7 +5,7 @@
     <ProfileVendor />
     <p class="Letra">Tus Campings</p>
     <CardCampVendor />
-    <img class="addcard" src="../mas.png" alt="" />
+     <button class="btn btn-outline-success" @click="add" type="submit"><img src="../mas.png" width="50" height="50"></button>
     <p class="Letra">Tus Solicitudes</p>
     <SolicitudesVendor />
   </div>
@@ -24,6 +24,11 @@ export default {
     CardCampVendor,
     SolicitudesVendor,
   },
+  methods: {
+  add() {
+    return this.$router.push('/Regiscamp');
+  }
+},
   computed: {
     userid: function () {
       var arr = JSON.parse( localStorage.getItem('usuario') );
@@ -33,12 +38,6 @@ export default {
 };
 </script>
 <style scoped>
-.addcard {
-  margin-top: 20px;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 50px;
-}
 .Bien {
   position: absolute;
   top: 8%;

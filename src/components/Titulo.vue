@@ -2,7 +2,7 @@
   <div class="contenedor_titulo">
     <div class="Titulo">
         <img src="../tent.png" class="logo" alt="..." />
-        <p>TuCamping</p>
+        <p><router-link to="/">TuCamping</router-link></p>
     </div>
   </div>
 </template>
@@ -31,6 +31,9 @@ export default {
   display: flex;
   align-items: baseline;
   text-align: right;
+  color: #4c922c;
+}
+.Titulo a{
   color: #4c922c;
 }
 .logo {

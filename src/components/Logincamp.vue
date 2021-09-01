@@ -25,7 +25,7 @@
               placeholder="Contraseña"
             />
           </div>
-          <p class="olvidar">¿Olvidó su Contraseña?</p>
+          <p class="olvidar"><router-link to="/Olvidar">¿Olvidó su Contraseña?</router-link></p>
           <div>
             <input
               class="Ingresar"
@@ -92,6 +92,9 @@ export default {
   align-items: center;
   border: none;
   margin-top: 30px;
+}
+.olvidar a{
+  color:black;
 }
 .Contenedor {
   width: 908px;

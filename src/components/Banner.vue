@@ -2,11 +2,17 @@
   <div
     id="carouselExampleIndicators"
     class="carousel slide"
-    data-ride="carousel">
+    data-ride="carousel"
+  >
     <div class="carousel-caption">
-      <div class="Titulo">
-        <img src="../tent.png" class="logo" alt="..." />
-        <p>TuCamping</p>
+      <div class="divtit">
+        <router-link to="/Registro">Tienes un camping? Regístrate.</router-link>
+        <div class="Titulo">
+          <img src="../tent.png" class="logo" alt="..." />
+          <p >TuCamping</p>
+        </div>
+
+        <router-link to="/Login">Iniciar Sesión</router-link>
       </div>
     </div>
     <ol class="carousel-indicators">
@@ -84,7 +90,7 @@ a {
 }
 .Titulo {
   height: 78px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: bold;
   font-size: 64px;
@@ -92,6 +98,16 @@ a {
   display: flex;
   align-items: baseline;
   text-align: right;
+}
+.divtit {
+  min-width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+
+}
+.divtit a{
+  color: #fff;
 }
 .logo {
   max-width: 70px;
