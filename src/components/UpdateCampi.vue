@@ -1,7 +1,7 @@
 <template>
   <div class="Bigcont">
     <div class="Contenedor">
-      <p class="Bien">Registra tu camping</p>
+      <p class="Bien">Actualiza tu camping</p>
       <div class="aux">
         <div class="formulario">
           <div class="user1">
@@ -58,11 +58,11 @@
         </div>
       </div>
       <input
-        class="Ingresar" @click="RegistroCamp" type="button" value="Registra tu Camping" />
+        class="Ingresar" @click="RegistroCamp" type="button" value="Actualiza tu Camping" />
     </div>
-    <!-- <pre>
+    <pre>
       {{ $data }}
-    </pre> -->
+    </pre>
   </div>
 </template>
 
@@ -104,9 +104,9 @@ export default {
       return arr.id;
     },
     async RegistroCamp() {
-      let respuesta = await this.$http.post("/campings/", this.Regiscamp);
+      let respuesta = await this.$http.put("/actualizarCamping/" + this.idUser() + "/", this.Regiscamp);
       console.log(respuesta);
-      swal("Registro exitoso", "", "success");
+      swal("Actualización exitosa", "", "success");
       this.$router.push("/ProfileVendor");
       // let camp = await this.$http.get("/campings/");
 
