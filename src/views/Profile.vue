@@ -4,8 +4,12 @@
     <p class="Bien">Bienvenid@ {{ userid }}!</p>
     <ProfileVendor />
     <p class="Letra">Tus Campings</p>
-    <CardCampVendor />
-     <button class="btn btn-outline-success" @click="add" type="submit"><img src="../mas.png" width="50" height="50"></button>
+    <ul>
+      <li v-for="item in campi" :key="item.name"><CardCampVendor /></li>
+    </ul>
+    <button class="btn btn-outline-success" @click="add" type="submit">
+      <img src="../mas.png" width="50" height="50" />
+    </button>
     <p class="Letra">Tus Solicitudes</p>
     <SolicitudesVendor />
   </div>
@@ -24,14 +28,32 @@ export default {
     CardCampVendor,
     SolicitudesVendor,
   },
+  data() {
+    return {
+      campi: [
+        {
+          name: "prueba1",
+        },
+        {
+          name: "prueba2",
+        },
+        {
+          name: "prueba3",
+        },
+        {
+          name: "prueba4",
+        },
+      ],
+    };
+  },
   methods: {
-  add() {
-    return this.$router.push('/Regiscamp');
-  }
-},
+    add() {
+      return this.$router.push("/Regiscamp");
+    },
+  },
   computed: {
     userid: function () {
-      var arr = JSON.parse( localStorage.getItem('usuario') );
+      var arr = JSON.parse(localStorage.getItem("usuario"));
       return arr.username;
     },
   },
