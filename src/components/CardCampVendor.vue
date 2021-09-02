@@ -5,15 +5,12 @@
       <img src="../Noche.jpg" class="Imagen" alt="" />
     </div>
     <div>
-      <p class="city">Desierto Tatacoa</p>
-      <p class="namecamp">Desierto Tatacoa</p>
+      <p class="city"> {{ camp.ciudad }} </p>
+      <p class="namecamp">{{ camp.nombre }}</p>
       <p class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quos
-        nihil eum, reprehenderit, ipsa laudantium nisi inventore officiis
-        ratione adipisci excepturi, dolor similique! Architecto, quae quo ab qui
-        aut ipsa.
+        {{ camp.descripcion}}
       </p>
-        <div class="grid">
+        <!-- <div class="grid">
             <img class="Icon" src="../electricity.png" alt="" />
             <img class="Icon" src="../cutlery.png" alt="" />
             <img class="Icon" src="../wifi.png" alt="" />
@@ -22,11 +19,14 @@
             <img class="Icon" src="../shower.png" alt="" /> <img class="Icon" src="../dog.png" alt="" />
             <img class="Icon" src="../tap.png" alt="" />
             <img class="Icon" src="../parking-sign.png" alt="" />
-      </div>
+      </div> -->
+      <p class="descripcion">
+        {{ camp.servicios}}
+      </p>
     </div>
     <div class="vl"></div>
     <div class="der">
-      <p class="precio">$100.000</p>
+      <p class="precio">${{ camp.precioNoche}}</p>
       <p class="precionoche">Precio por persona por noche</p>
       <input
         class="Solicitar"
@@ -42,6 +42,7 @@
 <script>
 export default {
   name: "CardCampVendor",
+  props: ['camp'],
   methods:{
         update() {
       this.$router.push('/CampingUpdate')

@@ -5,7 +5,9 @@
     <ProfileVendor />
     <p class="Letra">Tus Campings</p>
     <ul>
-      <li v-for="item in campi" :key="item.name"><CardCampVendor /></li>
+      <li v-for="item in campi" :key="item">
+        <CardCampVendor :camp="item" />
+      </li>
     </ul>
     <button class="btn btn-outline-success" @click="add" type="submit">
       <img src="../mas.png" width="50" height="50" />
@@ -30,38 +32,27 @@ export default {
   },
   data() {
     return {
-      campi: [
-        {
-          name: "prueba1",
-        },
-        {
-          name: "prueba2",
-        },
-        {
-          name: "prueba3",
-        },
-        {
-          name: "prueba4",
-        },
-      ],
+      campi: [],
     };
   },
-   methods: {
-  add() {
-    return this.$router.push('/Regiscamp');
-  },
-          idUser: function () {
+  methods: {
+    add() {
+      return this.$router.push("/Regiscamp");
+    },
+    idUser: function () {
       var arr = JSON.parse(localStorage.getItem("usuario"));
       return arr.id;
     },
-},
-    async mounted() { 
-      let camp = await this.$http.get("/mostrarCampIdVend/"+ this.idUser() + "/", this.Regiscamp);
-      console.log(camp.data);
-    },
-  computed: { 
+  },
+  mounted() {
+    let url =  "http://127.0.0.1:8000/mostrarCampIdVend/" + this.idUser() + "/";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => this.campi = data);
+  },
+  computed: {
     userid: function () {
-      var arr = JSON.parse( localStorage.getItem('usuario') );
+      var arr = JSON.parse(localStorage.getItem("usuario"));
       return arr.username;
     },
   },
