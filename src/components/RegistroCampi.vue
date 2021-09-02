@@ -60,9 +60,9 @@
       <input
         class="Ingresar" @click="RegistroCamp" type="button" value="Registra tu Camping" />
     </div>
-    <!-- <pre>
+    <pre>
       {{ $data }}
-    </pre> -->
+    </pre>
   </div>
 </template>
 
@@ -88,28 +88,27 @@ export default {
       },
     };
   },
-       beforeUpdate() {
-        this.service();
-         },
+      //  beforeUpdate() {
+      //   this.service();
+      //    },
   methods: {
-      service: function () {
-       var arri = this.ser;
-       var arr1 = JSON.stringify(Object.assign({},arri));
-       var arr2 = JSON.parse(arr1);
-       console.log(arr1);
-       return arr1;
-      },
+      // service: function () {
+      //  var arri = this.ser;
+      //  var arr1 = JSON.stringify(Object.assign({},arri));
+      //  var arr2 = JSON.parse(arr1);
+      //  console.log(arr1);
+      //  return arr1;
+      // },
     idUser: function () {
       var arr = JSON.parse(localStorage.getItem("usuario"));
       return arr.id;
     },
     async RegistroCamp() {
-      // let respuesta = await this.$http.post("/campings/", this.Regiscamp);
-      // console.log(respuesta);
-      // swal("Registro exitoso", "", "success");
-      // this.$router.push("/ProfileVendor");
-      let camp = await this.$http.get("/campings/");
-      console.log(camp)
+      let respuesta = await this.$http.post("/campings/", this.Regiscamp);
+      console.log(respuesta);
+      swal("Registro exitoso", "", "success");
+      this.$router.push("/ProfileVendor");
+      // let camp = await this.$http.get("/campings/");
       try {
       } catch (error) {
         swal("Oops!", "Registro fallido, vuelva a intentarlo", "error");
