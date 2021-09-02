@@ -44,7 +44,7 @@
             <input
               id="contra1"
               class="userinput"
-              type="text"
+              type="password"
               placeholder="Contraseña"
             />
           </div>
@@ -53,7 +53,7 @@
               v-model="update.password"
               id="contra2"
               class="userinput"
-              type="text"
+              type="password"
               placeholder="Confirmar Contraseña"
             />
           </div>

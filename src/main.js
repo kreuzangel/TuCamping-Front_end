@@ -13,6 +13,7 @@ const base1 = axios.create({
 Vue.prototype.$http = base;
 Vue.prototype.$http1 = base1;
 
+
 Vue.config.productionTip = false
 
 new Vue({

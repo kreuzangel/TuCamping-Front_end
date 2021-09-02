@@ -10,46 +10,22 @@
               v-model="Regiscamp.nombre"
               type="text"
               placeholder="Nombre del camping"
-            />
+             />
           </div>
           <div class="user">
-            <input
-              class="userinput"
-              v-model="Regiscamp.ciudad"
-              type="text"
-              placeholder="Ciudad"
-            />
+            <input class="userinput" v-model="Regiscamp.ciudad" type="text" placeholder="Ciudad"/>
           </div>
           <div class="user1">
-            <input
-              class="userinput"
-              v-model="Regiscamp.direccion"
-              type="text"
-              placeholder="Dirección"
-            />
+            <input class="userinput" v-model="Regiscamp.direccion" type="text" placeholder="Dirección" />
           </div>
           <div class="user">
-            <input
-              class="userinput"
-              v-model="Regiscamp.telefono"
-              type="number"
-              placeholder="Telefono"
-            />
+            <input class="userinput" v-model="Regiscamp.telefono" type="number" placeholder="Telefono" />
           </div>
-          <div class="user1">
-            <input
-              class="userinput"
-              type="text"
-              placeholder="Precio por Noche"
-            />
+          <div class="user1"> <input class="userinput" v-model="Regiscamp.servicios" type="text" placeholder="Servicios" />
           </div>
-          <div class="user2">
-            <textarea
-              class="userinput1"
-              v-model="Regiscamp.descripcion"
-              type="text"
-              placeholder="Descripción"
-            />
+          <div class="user"> <input class="userinput" v-model="Regiscamp.precioNoche" type="number" placeholder="Precio por Noche" />
+          </div>
+          <div class="user2"> <textarea class="userinput1" v-model="Regiscamp.descripcion" type="text" placeholder="Descripción" />
           </div>
         </div>
         <div class="ima">
@@ -57,112 +33,82 @@
           <img class="addphoto" src="../picture.png" alt="" />
           <div class="grid">
             <img class="Icon" src="../electricity.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Electricidad"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Electricidad" type="checkbox" />
             <img class="Icon" src="../cutlery.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Desayuno"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Desayuno" type="checkbox" />
             <img class="Icon" src="../wifi.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Wifi"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Wifi" type="checkbox" />
           </div>
           <div class="grid">
             <img class="Icon" src="../bbq.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="BBQ"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="BBQ" type="checkbox" />
             <img class="Icon" src="../bonfire.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Fogata"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Fogata" type="checkbox" />
             <img class="Icon" src="../shower.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Ducha"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Ducha" type="checkbox" />
           </div>
           <div class="grid">
             <img class="Icon" src="../dog.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Aceptamos Mascotas"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Aceptamos Mascotas" type="checkbox" />
             <img class="Icon" src="../tap.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Agua Caliente"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Agua Caliente" type="checkbox" />
             <img class="Icon" src="../parking-sign.png" alt="" />
-            <input
-              class="cuadrado"
-              id="checkbox"
-              value="Parqueadero disponible"
-              type="checkbox"
-            />
+            <input class="cuadrado" id="checkbox" v-model="ser" value="Parqueadero disponible" type="checkbox" />
           </div>
         </div>
       </div>
-      <input class="Ingresar" @click="RegistroCamp" type="button" value="Registra tu Camping" />
+      <input
+        class="Ingresar" @click="RegistroCamp" type="button" value="Registra tu Camping" />
     </div>
-    <pre>
+    <!-- <pre>
       {{ $data }}
-    </pre>
+    </pre> -->
   </div>
 </template>
 
 
 <script >
+
 import swal from "sweetalert";
 export default {
-  name: "RegistroCamp",
+  name: "RegistroCampi",
   data() {
     return {
+      ser:[],
       Regiscamp: {
         nombre: "",
         ciudad: "",
         direccion: "",
-        telefono: "",
-        servicios: "null",
+        telefono: "", 
+        servicios: "",
         descripcion: "",
+        precioNoche: "",
         imagen: null,
         vendedorId: this.idUser(),
       },
     };
   },
+       beforeUpdate() {
+        this.service();
+         },
   methods: {
+      service: function () {
+       var arri = this.ser;
+       var arr1 = JSON.stringify(Object.assign({},arri));
+       var arr2 = JSON.parse(arr1);
+       console.log(arr1);
+       return arr1;
+      },
     idUser: function () {
       var arr = JSON.parse(localStorage.getItem("usuario"));
       return arr.id;
     },
-        async RegistroCamp() {
+    async RegistroCamp() {
       let respuesta = await this.$http.post("/campings/", this.Regiscamp);
-      console.log(respuesta.data);
+      console.log(respuesta);
       swal("Registro exitoso", "", "success");
       this.$router.push("/ProfileVendor");
+      // let camp = await this.$http.get("/campings/");
 
       try {
       } catch (error) {
@@ -221,7 +167,7 @@ export default {
   font-size: 20px;
   color: #ffffff;
   border: none;
-  margin-top: 40px;
+  margin-top: 100px;
   margin-bottom: 40px;
   width: 250px;
 }
@@ -307,11 +253,11 @@ export default {
   display: flex;
   min-width: 550px;
   min-height: 133px;
-  background: #ffffff;
+  background: rgba(179, 226, 150, 0.3);;
   border: 1px solid #4c922c;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  margin: 35px;
+  margin-top: 0px;
 }
 
 .formulario {
@@ -369,5 +315,10 @@ export default {
 }
 .userinput1:focus {
   outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

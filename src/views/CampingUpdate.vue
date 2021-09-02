@@ -1,19 +1,20 @@
 <template>
-<div class="Registro">
+<div class="VendorUpdate">
   <Titulo/>
-  <RegistroCampi/>
+  <UpdateCampi/>
+
 </div>
 </template>
 <script>
 // @ is an alias to /src
 import Titulo from '@/components/Titulo.vue'
-import RegistroCampi from '@/components/RegistroCampi.vue'
+import UpdateCampi from '@/components/UpdateCampi.vue'
 
 export default {
-  name: 'Regiscamp',
+  name: 'CampingUpdate',
   components: {
     Titulo,
-    RegistroCampi,
+    UpdateCampi,
   }
 }
 </script>

@@ -32,6 +32,7 @@
         class="Solicitar"
         type="button"
         value="Editar"
+        @click="update()"
       />
     </div>
   </div>
@@ -42,6 +43,11 @@
 export default {
   name: "CardCampVendor",
   props: {},
+  methods:{
+        update() {
+      this.$router.push('/CampingUpdate')
+    },
+  }
 };
 </script>
 

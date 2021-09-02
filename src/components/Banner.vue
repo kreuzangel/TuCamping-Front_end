@@ -13,6 +13,7 @@
         </div>
 
         <router-link to="/Login">Iniciar Sesión</router-link>
+        <router-link to="/ProfileVendor">Perfil de Usuario</router-link>
       </div>
     </div>
     <ol class="carousel-indicators">

@@ -10,6 +10,7 @@
       <router-link to="/Regiscamp"></router-link>
       <router-link to="/ProfileVendor"></router-link>
       <router-link to="/VendorUpdate"></router-link>
+      <router-link to="/CampingUpdate"></router-link>
     </div>
     <router-view/>
   </div>

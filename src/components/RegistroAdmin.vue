@@ -48,7 +48,7 @@
             <input
               id="contra1"
               class="userinput"
-              type="text"
+              type="password"
               placeholder="Contraseña"
             />
           </div>
@@ -57,7 +57,7 @@
               v-model="registro.password"
               id="contra2"
               class="userinput"
-              type="text"
+              type="password"
               placeholder="Confirmar Contraseña"
             />
           </div>
@@ -99,7 +99,7 @@ export default {
       let respuesta = await this.$http.post("/usuario/usuario/", this.registro);
       console.log(respuesta.data);
       swal("Registro exitoso", "", "success");
-      this.$router.push("/Regiscamp");
+      this.$router.push("/ProfileVendor");
 
       try {
       } catch (error) {
