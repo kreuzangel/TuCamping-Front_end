@@ -46,14 +46,22 @@ export default {
       ],
     };
   },
-  methods: {
-    add() {
-      return this.$router.push("/Regiscamp");
-    },
+   methods: {
+  add() {
+    return this.$router.push('/Regiscamp');
   },
-  computed: {
-    userid: function () {
+          idUser: function () {
       var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.id;
+    },
+},
+    async mounted() { 
+      let camp = await this.$http.get("/mostrarCampIdVend/"+ this.idUser() + "/", this.Regiscamp);
+      console.log(camp.data);
+    },
+  computed: { 
+    userid: function () {
+      var arr = JSON.parse( localStorage.getItem('usuario') );
       return arr.username;
     },
   },
