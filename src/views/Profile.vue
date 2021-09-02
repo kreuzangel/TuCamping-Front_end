@@ -24,12 +24,21 @@ export default {
     CardCampVendor,
     SolicitudesVendor,
   },
+  
   methods: {
   add() {
     return this.$router.push('/Regiscamp');
-  }
+  },
+          idUser: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.id;
+    },
 },
-  computed: {
+    async mounted() { 
+      let camp = await this.$http.get("/mostrarCampIdVend/"+ this.idUser() + "/", this.Regiscamp);
+      console.log(camp.data);
+    },
+  computed: { 
     userid: function () {
       var arr = JSON.parse( localStorage.getItem('usuario') );
       return arr.username;

@@ -42,11 +42,16 @@
 <script>
 export default {
   name: "CardCampVendor",
-  props: {},
   methods:{
         update() {
       this.$router.push('/CampingUpdate')
     },
+
+        idUser: function () {
+      var arr = JSON.parse(localStorage.getItem("usuario"));
+      return arr.id;
+    },
+    
   }
 };
 </script>
