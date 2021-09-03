@@ -1,29 +1,51 @@
 <template>
   <div class="vista">
-    <StockHeader/> 
-    <Barra/> 
-    <StockCamp/> 
+    <StockHeader />
+    <ul>
+      <li v-for="item in city" :key="item">
+        <StockCamp :camp="item" />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import StockHeader from '@/components/StockHeader.vue'
+import swal from 'sweetalert';
+import StockHeader from "@/components/StockHeader.vue";
 import Barra from '@/components/Barra.vue'
-import StockCamp from '@/components/StockCamp.vue'
+import StockCamp from "@/components/StockCamp.vue";
 
 export default {
-  name: 'Stock',
+  name: "Stock",
   components: {
     StockHeader,
-    Barra,
     StockCamp,
+    Barra,
+  },
+  data() {
+    return {
+      city: [],
+    };
+  },
+  mounted() {
+         var ciudad= localStorage.getItem("ciudad");
+         let url =  "http://127.0.0.1:8000/mostrarcampingciudad/" + ciudad + "/";
+    fetch(url)
+      .then(res => res.json())
+      .then(data => this.city = data);
+      console.log(this.res);
+      if(this.res == undefined)
+      {
+        swal("Oops!", "No Hay Campings en esa Ciudad", "error");
+        this.$router.push('/')
+      }
   }
-    
-}
+};
+
 </script>
 <style scoped>
-.vista{
-    display: block;
+.vista {
+  display: block;
 }
 </style>

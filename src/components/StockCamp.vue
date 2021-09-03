@@ -1,116 +1,65 @@
 <template>
-<div>
-  <div class="card">
-    <div class="Izq">
-      <img src="../Noche.jpg" class="Imagen" alt="" />
-    </div>
-    <div>
-      <p class="city">Desierto Tatacoa</p>
-      <p class="namecamp">Desierto Tatacoa</p>
-      <p class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quos
-        nihil eum, reprehenderit, ipsa laudantium nisi inventore officiis
-        ratione adipisci excepturi, dolor similique! Architecto, quae quo ab qui
-        aut ipsa.
-      </p>
-    </div>
-    <div class="vl"></div>
-    <div class="der">
-      <p class="precio">$100.000</p>
-      <p class="precionoche">Precio por persona por noche</p>
-      <input
-        class="Solicitar"
-        type="button"
-        value="Solicitar"
-      />
-    </div>
-  </div>
+<div class="Bigcont">
     <div class="card">
     <div class="Izq">
       <img src="../Noche.jpg" class="Imagen" alt="" />
     </div>
     <div>
-      <p class="city">Desierto Tatacoa</p>
-      <p class="namecamp">Desierto Tatacoa</p>
+      <p class="city"> {{ camp.ciudad }} </p>
+      <p class="namecamp">{{ camp.nombre }}</p>
       <p class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quos
-        nihil eum, reprehenderit, ipsa laudantium nisi inventore officiis
-        ratione adipisci excepturi, dolor similique! Architecto, quae quo ab qui
-        aut ipsa.
+        {{ camp.descripcion}}
+      </p>
+        <!-- <div class="grid">
+            <img class="Icon" src="../electricity.png" alt="" />
+            <img class="Icon" src="../cutlery.png" alt="" />
+            <img class="Icon" src="../wifi.png" alt="" />
+            <img class="Icon" src="../bbq.png" alt="" />
+            <img class="Icon" src="../bonfire.png" alt="" />
+            <img class="Icon" src="../shower.png" alt="" /> <img class="Icon" src="../dog.png" alt="" />
+            <img class="Icon" src="../tap.png" alt="" />
+            <img class="Icon" src="../parking-sign.png" alt="" />
+      </div> -->
+      <p class="descripcion">
+        {{ camp.servicios}}
       </p>
     </div>
     <div class="vl"></div>
     <div class="der">
-      <p class="precio">$100.000</p>
+      <p class="precio">${{ camp.precioNoche}}</p>
       <p class="precionoche">Precio por persona por noche</p>
       <input
         class="Solicitar"
         type="button"
         value="Solicitar"
+        @click="solicitar()"
       />
     </div>
   </div>
-    <div class="card">
-    <div class="Izq">
-      <img src="../Noche.jpg" class="Imagen" alt="" />
-    </div>
-    <div>
-      <p class="city">Desierto Tatacoa</p>
-      <p class="namecamp">Desierto Tatacoa</p>
-      <p class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quos
-        nihil eum, reprehenderit, ipsa laudantium nisi inventore officiis
-        ratione adipisci excepturi, dolor similique! Architecto, quae quo ab qui
-        aut ipsa.
-      </p>
-    </div>
-    <div class="vl"></div>
-    <div class="der">
-      <p class="precio">$100.000</p>
-      <p class="precionoche">Precio por persona por noche</p>
-      <input
-        class="Solicitar"
-        type="button"
-        value="Solicitar"
-      />
-    </div>
-  </div>
-    <div class="card">
-    <div class="Izq">
-      <img src="../Noche.jpg" class="Imagen" alt="" />
-    </div>
-    <div>
-      <p class="city">Desierto Tatacoa</p>
-      <p class="namecamp">Desierto Tatacoa</p>
-      <p class="descripcion">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quos
-        nihil eum, reprehenderit, ipsa laudantium nisi inventore officiis
-        ratione adipisci excepturi, dolor similique! Architecto, quae quo ab qui
-        aut ipsa.
-      </p>
-    </div>
-    <div class="vl"></div>
-    <div class="der">
-      <p class="precio">$100.000</p>
-      <p class="precionoche">Precio por persona por noche</p>
-      <input
-        class="Solicitar"
-        type="button"
-        value="Solicitar"
-      />
-    </div>
-  </div>
-  </div>
+</div>
 </template>
 
 <script>
 export default {
   name: "StockCamp",
+  props: ['camp'],
+  methods:{
+      solicitar() {
+      this.$router.push('/Solicitar/')
+    },
+      idCamp: function () {
+      var arr = JSON.parse(camp.idCamp);
+      return arr;
+    },
+    
+  }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.Bigcont{
+    margin:40px;
+}
 .card {
   width: 1200px;
   height: 300px;
@@ -214,5 +163,18 @@ export default {
   color: #ffffff;
   border: none;
   margin-top: 80px;
+}
+.Icon {
+  margin-right: 10px;
+  margin-left: 15px;
+  width: 23px;
+  height: 23px;
+}
+.grid {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 </style>
