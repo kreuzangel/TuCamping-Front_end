@@ -1,15 +1,15 @@
 <template>
-<div class="Bigcont">
+  <div class="Bigcont">
     <div class="card">
-    <div class="Izq">
-      <img src="../Noche.jpg" class="Imagen" alt="" />
-    </div>
-    <div>
-      <p class="city"> {{ camp.ciudad }} </p>
-      <p class="namecamp">{{ camp.nombre }}</p>
-      <p class="descripcion">
-        {{ camp.descripcion}}
-      </p>
+      <div class="Izq">
+        <img src="../Noche.jpg" class="Imagen" alt="" />
+      </div>
+      <div>
+        <p class="city">{{ camp.ciudad }}</p>
+        <p class="namecamp">{{ camp.nombre }}</p>
+        <p class="descripcion">
+          {{ camp.descripcion }}
+        </p>
         <!-- <div class="grid">
             <img class="Icon" src="../electricity.png" alt="" />
             <img class="Icon" src="../cutlery.png" alt="" />
@@ -20,45 +20,49 @@
             <img class="Icon" src="../tap.png" alt="" />
             <img class="Icon" src="../parking-sign.png" alt="" />
       </div> -->
-      <p class="descripcion">
-        {{ camp.servicios}}
-      </p>
-    </div>
-    <div class="vl"></div>
-    <div class="der">
-      <p class="precio">${{ camp.precioNoche}}</p>
-      <p class="precionoche">Precio por persona por noche</p>
-      <input
-        class="Solicitar"
-        type="button"
-        value="Solicitar"
-        @click="solicitar()"
-      />
+        <p class="descripcion">
+          {{ camp.servicios }}
+        </p>
+      </div>
+      <div class="vl"></div>
+      <div class="der">
+        <p class="precio">${{ camp.precioNoche }}</p>
+        <p class="precionoche">Precio por persona por noche</p>
+        <input
+          class="Solicitar"
+          type="button"
+          value="Solicitar"
+          @click="solicitar()"
+        />
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
   name: "StockCamp",
-  props: ['camp'],
-  methods:{
-      solicitar() {
-      this.$router.push('/Solicitar/')
+  props: ["camp"],
+  methods: {
+    solicitar() {
+      this.$router.push({
+        name: "Solicitar",
+        params: {
+          id: this.camp.idCamp,
+        },
+      });
     },
-      idCamp: function () {
+    idCamp: function () {
       var arr = JSON.parse(camp.idCamp);
       return arr;
     },
-    
-  }
+  },
 };
 </script>
 
 <style scoped>
-.Bigcont{
-    margin:40px;
+.Bigcont {
+  margin: 40px;
 }
 .card {
   width: 1200px;
@@ -152,7 +156,7 @@ export default {
   line-height: 12px;
   color: #000000;
 }
-.Solicitar{
+.Solicitar {
   background-color: #4c922c;
   width: 120px;
   height: 35px;

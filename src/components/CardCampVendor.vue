@@ -1,15 +1,15 @@
 <template>
-<div class="Bigcont">
+  <div class="Bigcont">
     <div class="card">
-    <div class="Izq">
-      <img src="../Noche.jpg" class="Imagen" alt="" />
-    </div>
-    <div>
-      <p class="city"> {{ camp.ciudad }} </p>
-      <p class="namecamp">{{ camp.nombre }}</p>
-      <p class="descripcion">
-        {{ camp.descripcion}}
-      </p>
+      <div class="Izq">
+        <img src="../Noche.jpg" class="Imagen" alt="" />
+      </div>
+      <div>
+        <p class="city">{{ camp.ciudad }}</p>
+        <p class="namecamp">{{ camp.nombre }}</p>
+        <p class="descripcion">
+          {{ camp.descripcion }}
+        </p>
         <!-- <div class="grid">
             <img class="Icon" src="../electricity.png" alt="" />
             <img class="Icon" src="../cutlery.png" alt="" />
@@ -20,46 +20,49 @@
             <img class="Icon" src="../tap.png" alt="" />
             <img class="Icon" src="../parking-sign.png" alt="" />
       </div> -->
-      <p class="descripcion">
-        {{ camp.servicios}}
-      </p>
-    </div>
-    <div class="vl"></div>
-    <div class="der">
-      <p class="precio">${{ camp.precioNoche}}</p>
-      <p class="precionoche">Precio por persona por noche</p>
-      <input
-        class="Solicitar"
-        type="button"
-        value="Editar"
-        @click="update()"
-      />
+        <p class="descripcion">
+          {{ camp.servicios }}
+        </p>
+      </div>
+      <div class="vl"></div>
+      <div class="der">
+        <p class="precio">${{ camp.precioNoche }}</p>
+        <p class="precionoche">Precio por persona por noche</p>
+        <input
+          class="Solicitar"
+          type="button"
+          value="Editar"
+          @click="update()"
+        />
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
   name: "CardCampVendor",
-  props: ['camp'],
-  methods:{
-        update() {
-      this.$router.push('/CampingUpdate')
+  props: ["camp"],
+  methods: {
+    update() {
+      this.$router.push({
+        name: "CampingUpdate",
+        params: {
+          id: this.camp.idCamp,
+        },
+      });
     },
-
-        idUser: function () {
+    idUser: function () {
       var arr = JSON.parse(localStorage.getItem("usuario"));
       return arr.id;
     },
-    
-  }
+  },
 };
 </script>
 
 <style scoped>
-.Bigcont{
-    margin:40px;
+.Bigcont {
+  margin: 40px;
 }
 .card {
   width: 1200px;
@@ -153,7 +156,7 @@ export default {
   line-height: 12px;
   color: #000000;
 }
-.Solicitar{
+.Solicitar {
   background-color: #4c922c;
   width: 120px;
   height: 35px;
