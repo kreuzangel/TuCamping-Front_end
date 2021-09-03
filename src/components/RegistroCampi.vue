@@ -25,7 +25,7 @@
           </div>
           <div class="user"> <input class="userinput" v-model="Regiscamp.precioNoche" type="number" placeholder="Precio por Noche" />
           </div>
-          <div class="user2"> <textarea class="userinput1" v-model="Regiscamp.descripcion" type="text" placeholder="Descripción" />
+          <div class="user2"> <textarea class="userinput1" v-model="Regiscamp.descripcion" type="text" placeholder="Descripción" maxlength="150"/>
           </div>
         </div>
         <div class="ima">

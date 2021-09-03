@@ -5,19 +5,20 @@
       <div class="aux">
         <div class="formulario">
           <div class="user1">
-            <input class="userinput" type="text" placeholder="Nombre" />
+            <input class="userinput" type="text" placeholder="Nombre" v-model="Reserv.nombre"/>
           </div>
           <div class="user">
-            <input class="userinput" type="text" placeholder="Apellido" />
+            <input class="userinput" type="text" placeholder="Apellido" v-model="Reserv.apellido"/>
           </div>
           <div class="user1">
-            <input class="userinput" type="email" placeholder="Email" />
+            <input class="userinput" type="email" placeholder="Email" v-model="Reserv.correo"/>
           </div>
           <div class="user">
             <input
               class="userinput"
               type="number"
               placeholder="Celular"
+              v-model="Reserv.telefono"
             />
           </div>
           <div class="user1">
@@ -25,36 +26,78 @@
               class="userinput"
               type="number"
               placeholder="N° de Campistas"
+              v-model="Reserv.numPersonas"
             />
           </div>
           <div class="user">
             <input
               class="userinput"
-              type="number"
+              type="date"
               placeholder="Fecha de Ingreso"
+              v-model="Reserv.fechaIni"
             />
           </div>
           <div class="user1">
             <input
               class="userinput"
-              type="number"
+              type="date"
               placeholder="Fecha de Salida"
+              v-model="Reserv.fechaFin"
             />
           </div>
         </div>
         <div class="ima">
           <p class="Nombreima">Nombre Camping</p>
           <img class="imagen" src="../Noche.jpg" alt="" />
-          <input class="Ingresar" type="button" value="Enviar Solicitud" />
+          <input class="Ingresar" type="button" value="Enviar Solicitud" @click="reservar"/>
         </div>
       </div>
     </div>
+    <pre>
+      {{ $data }}
+    </pre>
   </div>
 </template>
 <script>
 export default {
   name: "SolicitarReserva",
-  props: {},
+   data() {
+    return {
+      campin:{
+
+      },
+      Reserv: {
+        nombre: "",
+        apellido: "",
+        telefono: "",
+        correo: "", 
+        fechaIni: "",
+        fechaFin: "",
+        numPersonas: "",
+        campingId: this.idCamp(),
+      },
+    };
+  },
+  mounted(){
+
+  },
+  methods: {
+    idCamp: function () {
+      let id = this.$route.params.id; 
+      return id;
+    },
+    async reservar() {
+      let respuesta = await this.$http.post("/reservas/", this.Reserv);
+      console.log(respuesta);
+      swal("Solicitud exitosa", "", "success");
+      this.$router.push("/");
+      // let camp = await this.$http.get("/campings/");
+      try {
+      } catch (error) {
+        swal("Oops!", "Solicitud Fallida, vuelva a intentarlo", "error");
+      }
+    },
+  },
 };
 </script>
 <style scoped>

@@ -89,8 +89,8 @@ export default {
         nombres: "",
         apellidos: "",
         telefono: "",
-        // is_active: true,
-        // is_staff: true,
+        //is_active: true,
+        //is_staff: true,
       },
     };
   },

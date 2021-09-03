@@ -11,9 +11,9 @@
 
 <script>
 // @ is an alias to /src
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import StockHeader from "@/components/StockHeader.vue";
-import Barra from '@/components/Barra.vue'
+import Barra from "@/components/Barra.vue";
 import StockCamp from "@/components/StockCamp.vue";
 
 export default {
@@ -29,20 +29,13 @@ export default {
     };
   },
   mounted() {
-         var ciudad= localStorage.getItem("ciudad");
-         let url =  "http://127.0.0.1:8000/mostrarcampingciudad/" + ciudad + "/";
+    var ciudad = localStorage.getItem("ciudad");
+    let url = "http://127.0.0.1:8000/mostrarcampingciudad/" + ciudad + "/";
     fetch(url)
-      .then(res => res.json())
-      .then(data => this.city = data);
-      console.log(this.res);
-      if(this.res == undefined)
-      {
-        swal("Oops!", "No Hay Campings en esa Ciudad", "error");
-        this.$router.push('/')
-      }
-  }
+      .then((res) => res.json())
+      .then((data) => (this.city = data));
+  },
 };
-
 </script>
 <style scoped>
 .vista {

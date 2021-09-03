@@ -24,9 +24,6 @@
         </button>
       </form>
     </nav>
-    <pre>
-      {{ $data }}
-    </pre>
   </div>
 </template> 
 <script>
