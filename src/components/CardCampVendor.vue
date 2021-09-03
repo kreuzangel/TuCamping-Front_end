@@ -45,7 +45,8 @@ export default {
   props: ['camp'],
   methods:{
         update() {
-      this.$router.push('/CampingUpdate')
+        localStorage.setItem('idCamp',)
+        this.$router.push('/CampingUpdate')
     },
 
         idUser: function () {

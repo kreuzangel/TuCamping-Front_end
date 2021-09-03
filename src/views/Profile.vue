@@ -49,6 +49,7 @@ export default {
     fetch(url)
       .then(res => res.json())
       .then(data => this.campi = data);
+      console.log(res)
   },
   computed: {
     userid: function () {
