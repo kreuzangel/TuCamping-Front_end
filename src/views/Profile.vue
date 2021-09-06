@@ -13,7 +13,7 @@
       <img src="../mas.png" width="50" height="50" />
     </button>
     <p class="Letra">Tus Solicitudes</p>
-    <SolicitudesVendor />
+    <SolicitudesTable />
   </div>
 </template>
 <script>
@@ -21,14 +21,14 @@
 import StockHeader from "@/components/StockHeader.vue";
 import ProfileVendor from "@/components/ProfileVendor.vue";
 import CardCampVendor from "@/components/CardCampVendor.vue";
-import SolicitudesVendor from "@/components/SolicitudesVendor.vue";
+import SolicitudesTable from "@/components/SolicitudesTable.vue";
 export default {
   name: "Profile",
   components: {
     StockHeader,
     ProfileVendor,
     CardCampVendor,
-    SolicitudesVendor,
+    SolicitudesTable,
   },
   data() {
     return {
@@ -49,7 +49,6 @@ export default {
     fetch(url)
       .then(res => res.json())
       .then(data => this.campi = data);
-      console.log(res)
   },
   computed: {
     userid: function () {

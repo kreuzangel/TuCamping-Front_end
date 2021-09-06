@@ -47,15 +47,12 @@
           </div>
         </div>
         <div class="ima">
-          <p class="Nombreima">Nombre Camping</p>
+          <p class="Nombreima"> {{ this.campi.nombre }} </p>
           <img class="imagen" src="../Noche.jpg" alt="" />
           <input class="Ingresar" type="button" value="Enviar Solicitud" @click="reservar"/>
         </div>
       </div>
     </div>
-    <pre>
-      {{ $data }}
-    </pre>
   </div>
 </template>
 <script>
@@ -63,9 +60,7 @@ export default {
   name: "SolicitarReserva",
    data() {
     return {
-      campin:{
-
-      },
+    campi: [],
       Reserv: {
         nombre: "",
         apellido: "",
@@ -75,15 +70,23 @@ export default {
         fechaFin: "",
         numPersonas: "",
         campingId: this.idCamp(),
+        vendedorId: this.idVendor(),
       },
     };
   },
-  mounted(){
-
+  mounted() {
+      let url =
+        "http://127.0.0.1:8000/mostrarCamping/" + this.idCamp() + "/";
+      fetch(url).then((res) => res.json())
+      .then(data => this.campi = data);
   },
   methods: {
     idCamp: function () {
       let id = this.$route.params.id; 
+      return id;
+    },
+    idVendor: function () {
+      let id = this.$route.params.idVendor; 
       return id;
     },
     async reservar() {

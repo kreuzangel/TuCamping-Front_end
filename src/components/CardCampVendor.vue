@@ -49,6 +49,7 @@ export default {
         name: "CampingUpdate",
         params: {
           id: this.camp.idCamp,
+          idvendor: this.camp.vendedorId,
         },
       });
     },
@@ -62,7 +63,8 @@ export default {
 
 <style scoped>
 .Bigcont {
-  margin: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .card {
   width: 1200px;

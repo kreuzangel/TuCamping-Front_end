@@ -49,6 +49,7 @@ export default {
         name: "Solicitar",
         params: {
           id: this.camp.idCamp,
+          idVendor: this.camp.vendedorId,
         },
       });
     },
